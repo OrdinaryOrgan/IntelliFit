@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body style="padding-top: 20px">
+  <div class="container" style="margin-top:  5rem">
+  <img class="login-logo" src="/image/Logo.png" alt="Logo">
+  </div>
+      <div class="col-lg-4" style="margin: 3rem auto auto;background-color: rgba(228,253,253,0.72)">
+<!--        #c5d7f2-->
+        <div class="container" style="padding-top: 30px;padding-bottom: 30px">
+        <fieldset class="form-fieldset">
+          <h2 style="text-align: center">Welcome Back !</h2>
+          <div class="mb-3">
+            <label class="form-label required">User Id</label>
+            <input type="text" class="form-control" autocomplete="off" id="loginUserId"/>
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label required">Password</label>
+            <input type="password" class="form-control" autocomplete="off" id="loginPassword"/>
+          </div>
+        </fieldset>
+        <div style="display: flex">
+        <button onclick="userLogin()" type="submit" class="btn btn-primary" style="margin: auto;padding: 8px 20px">Login</button>
+        </div>
+        <p style="text-align: center;margin-top: 20px">Don't have account?<a href="Register.html" id="toRegister">Register</a></p>
+      </div>
+      </div>
+
+
+
+<script>
+  function userLogin() {
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/userLogin', true);
+
+    xhr.onload = function() {
+      let data = JSON.parse(xhr.response);
+      if(data.code === 1) {
+        // 登录成功
+        console.log(data);
+        window.localStorage.setItem('admin-new',data);
+        window.location.href = '/index.html';
+      } else {
+        // 登录失败
+        alert('test2'+data.msg);
+      }
+    }
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    const userId = document.getElementById('loginUserId');
+    const password = document.getElementById('loginPassword');
+
+    xhr.send(JSON.stringify({
+      userID: userId.value,
+      password: password.value
+    }));
+
+  }
+</script>
+</body>
+<style>
+  body {
+    background-color: transparent;  /* a light grey color */
+    background-image: url("image/Background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  .login-logo {
+    width: 375px;
+    height: 150px;
+    margin: 0 auto 20px;
+    display: block;
+  }
+</style>
+</html>

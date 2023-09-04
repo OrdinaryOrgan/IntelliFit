@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top:  5rem">
+  <img class="login-logo" src="/image/Logo.png" alt="Logo">
+</div>
+<div class="col-lg-4" style="margin: 3rem auto auto;background-color: #c5d7f2">
+  <div class="container" style="padding-top: 30px;padding-bottom: 30px">
+    <fieldset class="form-fieldset">
+      <h2 style="text-align: center">Welcome to Intellifit</h2>
+      <div class="mb-3">
+        <label class="form-label required">User Id</label>
+        <input type="text" class="form-control" autocomplete="off" id="registerUserId"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label required">User Name</label>
+        <input type="text" class="form-control" autocomplete="off" id="userName"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label required">Password</label>
+        <input type="password" class="form-control" autocomplete="off" id="registerPassword"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label required">Gender</label>
+        <input type="text" class="form-control" autocomplete="off" id="sex"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label required">Age</label>
+        <input type="number" class="form-control" autocomplete="off" id="age"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label required">Height (meter)</label>
+        <input type="number" class="form-control" autocomplete="off" id="height"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label required">Weight (kg)</label>
+        <input type="number" class="form-control" autocomplete="off" id="weight"/>
+      </div>
+    </fieldset>
+    <div style="display: flex">
+      <button onclick="userRegister()" type="submit" class="btn btn-primary" style="margin: auto;padding: 8px 20px">Register</button>
+    </div>
+    <p style="text-align: center;margin-top: 20px">Already have account?<a href="Register.html" id="toLogin">Login</a></p>
+  </div>
+</div>
+
+
+
+<script>
+
+
+  function userRegister() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/userRegs', true);
+    xhr.onload = function (){
+      let data = JSON.parse(xhr.response);
+      if(data.code === 1) {
+        // 注册成功
+        console.log(data);
+        window.localStorage.setItem('admin-new',data);
+        window.location.href = '/Login.html';
+      } else if(xhr.status != 200){
+        alert('请输入注册信息');
+      }else {
+        // 注册失败
+        console.log(data);
+        alert('test2'+data.msg);
+      }
+    }
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      userID: document.getElementById('registerUserId').value,
+      password: document.getElementById('registerPassword').value,
+      sex: document.getElementById('sex').value,
+      username: document.getElementById('userName').value,
+      age: document.getElementById('age').value,
+      weight: document.getElementById('weight').value,
+      height: document.getElementById('height').value,
+    }));
+  }
+
+</script>
+
+</body>
+<style>
+  body {
+    background-color: rgba(246, 103, 7, 0.47);  /* a light grey color */
+  }
+
+
+  .login-logo {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    display: block;
+  }
+</style>
+</html>

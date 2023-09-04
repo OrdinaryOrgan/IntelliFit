@@ -14,16 +14,16 @@
 
 - MQTT Subscriber
 > MQTT Subscriber runs on the client, so you may run it on your PC.
-> Start to subscribe data from publisher in `/Backend and Frontend/Conn/DataSubscribe.py`  
-> Type `python /Backend and Frontend/Conn/DataSubscribe.py` and run in Command line
+> Start to subscribe data from publisher in `/Backend&Frontend/Conn/DataSubscribe.py`  
+> Type `python /Backend&Frontend/Conn/DataSubscribe.py` and run in Command line
 
 - Raspberry Pi
 > Start to process and publish data in `/Pi/StartPublish.py`
 > Type `python /Pi/StartPublish.py` and run in Command line
 
 ### Other Tips
-- Please check the `/Backend and Frontend/pow.xml` and `/Backend and Frontend/src/main/resources/application.yml` to learn about configuration
-- Configuration of database also appear in `/Backend and Frontend/Conn/DataSubscribe.py`
+- Please check the `/Backend&Frontend/pow.xml` and `/Backend&Frontend/src/main/resources/application.yml` to learn about configuration
+- Configuration of database also appear in `/Backend&Frontend/Conn/DataSubscribe.py`
 
 ### Copyright and Thank
 - Our team from XJTU & SCU copyrights this project, and I only copyright the **Backend** and **Database** part.

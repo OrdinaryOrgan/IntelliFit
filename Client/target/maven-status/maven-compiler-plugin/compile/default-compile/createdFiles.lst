@@ -1,0 +1,15 @@
+com\example\service\impl\PostureServiceImpl.class
+com\example\AIoTProjectApplication.class
+com\example\service\PostureService.class
+com\example\service\impl\UserServiceImpl.class
+com\example\util\Result.class
+com\example\controller\UserController.class
+com\example\service\impl\EnvironmentServiceImpl.class
+com\example\service\EnvironmentService.class
+com\example\mapper\EnvironmentMapper.class
+com\example\mapper\UserMapper.class
+com\example\service\UserService.class
+com\example\mapper\PostureMapper.class
+com\example\pojo\Posture.class
+com\example\pojo\User.class
+com\example\pojo\Environment.class
